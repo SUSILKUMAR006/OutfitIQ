@@ -1,0 +1,80 @@
+@import "tailwindcss";
+
+/* Light, professional theme. Utilities like bg-surface / text-muted read these tokens. */
+:root {
+  --bg: #fafafa;
+  --surface: #ffffff;
+  --surface-2: #f4f4f5;
+  --tile: #f4f4f3;
+  --ink: #18181b;
+  --ink-2: #3f3f46;
+  --muted: #71717a;
+  --line: #e4e4e7;
+  --line-strong: #d4d4d8;
+  --accent: #4f46e5;
+  --accent-soft: #eef2ff;
+  --accent-ink: #ffffff;
+  --good: #059669;
+  --good-soft: #ecfdf5;
+  --warn: #d97706;
+  --warn-soft: #fffbeb;
+  color-scheme: light;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-tile: var(--tile);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-accent-ink: var(--accent-ink);
+  --color-good: var(--good);
+  --color-good-soft: var(--good-soft);
+  --color-warn: var(--warn);
+  --color-warn-soft: var(--warn-soft);
+  --font-sans: "Poppins", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: "Poppins", ui-sans-serif, system-ui, sans-serif;
+  --shadow-card: 0 1px 2px rgb(24 24 27 / 0.04), 0 1px 3px rgb(24 24 27 / 0.04);
+  --shadow-lift: 0 4px 16px -4px rgb(24 24 27 / 0.10), 0 2px 4px -2px rgb(24 24 27 / 0.06);
+}
+
+@layer base {
+  html { -webkit-tap-highlight-color: transparent; }
+  body {
+    @apply bg-bg text-ink font-sans antialiased;
+  }
+  button, [role="button"] { cursor: pointer; }
+  button:disabled { cursor: not-allowed; }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  ::selection { background: var(--accent-soft); }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 h-10 text-sm font-medium transition-all whitespace-nowrap disabled:opacity-50;
+  }
+  /* Use together with .btn, e.g. className="btn btn-primary" */
+  .btn-primary { @apply bg-ink text-white shadow-sm hover:bg-ink-2; }
+  .btn-accent { @apply bg-accent text-accent-ink shadow-sm hover:brightness-110; }
+  .btn-secondary { @apply bg-surface border border-line text-ink shadow-sm hover:border-line-strong hover:bg-surface-2; }
+  .btn-ghost { @apply text-muted hover:text-ink hover:bg-surface-2; }
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-full border border-line bg-surface px-3.5 h-9 text-[13px] font-medium text-ink-2 transition-colors whitespace-nowrap hover:border-line-strong hover:text-ink;
+  }
+  .chip-active { @apply bg-ink text-white border-ink hover:border-ink hover:text-white; }
+  .card { @apply rounded-xl bg-surface border border-line shadow-card; }
+  .field {
+    @apply w-full h-10 rounded-lg border border-line bg-surface px-3 text-sm text-ink outline-none transition-colors hover:border-line-strong focus:border-accent focus:ring-3 focus:ring-accent/15;
+  }
+  .label { @apply block text-xs font-medium text-ink-2 mb-1.5; }
+  .eyebrow { @apply text-xs font-semibold uppercase tracking-[0.12em] text-accent; }
+}
+
+.no-scrollbar { scrollbar-width: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }

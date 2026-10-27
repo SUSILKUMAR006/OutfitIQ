@@ -1,0 +1,12 @@
+node_modules/
+client/dist/
+server/data/*.json
+server/data/*.tmp
+server/uploads/*
+!server/uploads/.gitkeep
+!server/data/.gitkeep
+.DS_Store
+
+# secrets
+.env
+server/.env
